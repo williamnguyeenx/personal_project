@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+        
+<h2 class="head pt-5 text-center"> {{ tag.name }} </h2>
+
+<div class="container my-5">
+    {% for story in stories %}
+    <a href="{% url 'show-story' story.id %}"><div class="read-intro bg-light mt-3">
+        <div class="row">
+            <div class="cover col-*">
+                {% if story.story_image %}
+                <img class="shadow" src="{{ story.story_image.url }}" alt="" class="img-fluid" style="width: 300px; height:300px">
+                {% endif %}
+            </div>
+            <div class="info col">
+                <h2 class="head"> {{ story.name }} </h2>
+                <table class="table table-borderless">
+                    <tbody>
+                        <tr>
+                            <th scope="row">Genre:</th>
+                            <td>{{ story.tag }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Artist:</th>
+                            <td> {{ story.author }} </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Update:</th>
+                            <td> {{ story.created_at }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Likes:</th>
+                            <td><span class="font-weight-bold ml-3"> {{ story.total_likes }} </span></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>{{ story.description }}</p>
+            </div>
+        </div>
+    </div></a> 
+    {% endfor %}
+</div>
+
+{% endblock %}
+
