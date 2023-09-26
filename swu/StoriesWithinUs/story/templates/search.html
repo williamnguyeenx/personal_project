@@ -120,20 +120,6 @@
     </div>
     {% endif %}
 
-<div class = "container bg-light" style="color:black">
-    {% if story_list.has_previous %}
-    <a href="?page=1">&laquo First</a>
-    <a href="?page={{ story_list.previous_page_number }}">&laquo Previous</a>
-    {% endif %}
-
-    Page {{ story_list.number }} of {{ story_list.paginator.num_pages }}
-
-    {% if story_list.has_next %}
-    <a href="?page={{ story_list.next_page_number }}">Next</a>
-    <a href="?page={{ story_list.next_page_number }}">Last &raquo</a>
-    {% endif %}
-</div>
-
 {% endblock %}
 
 

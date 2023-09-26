@@ -24,7 +24,7 @@
     <div class="preface group">
       <h2 class="title heading"><a href="{% url 'show-story' story.id %}"> {{ story.name }} </a></h2>
       <h3 class="byline heading">
-        <a rel="author" href="{% url 'profile' request.user.id %}"> {{ story.author }} </a>
+        <a rel="author" href="{% url 'profile' story.author.id %}"> {{ story.author }} </a>
       </h3>
     </div>
 
@@ -51,7 +51,7 @@
 </div>
 
 
-<div id="feedback" class="feedback container">
+<div id="feedback" class="feedback container mb-5">
     <div class="actions container d-flex justify-content-end pr-0" role="navigation">
         <div class="dropdown">
             <button style="margin:3px" class="dropdown-toggle btn btn-secondary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -66,7 +66,7 @@
         <a class="btn btn-secondary" style="margin:3px" href="#">Top</a>
     </div>
     
-    <br>
+    <hr style="background-color: white;">
 
     <h3 class="landmark heading"><a id="comments">Comments</a></h3>
     <div>
@@ -75,17 +75,17 @@
         {% else %}
             <div style="border-style: inset; padding:10px; margin-top: 10px;">
                 {% for comment in story.comments.all %}
-                    <div><a href="#">{{ comment.name }}</a> at {{ comment.created_at }}</div>
+                    <div><a href="{% url 'profile' comment.name.id %}">{{ comment.name }}</a> at {{ comment.created_at }}</div>
                     <div>{{ comment.body }}</div>
                 {% endfor %}
             </div>
         </div>
         {% endif %}
         <br>
-        <form action="" method="POST">
+        <form action="" method="POST" style="border-style: inset; padding:10px; margin-top: 10px;">
             {% csrf_token %}
             {{ form.as_p }}
-            <input type="submit" value="Submit" class="btn btn-secondary">
+            <input type="submit" value="Comment!" class="btn btn-secondary">
         </form>
     </div>
 </div>

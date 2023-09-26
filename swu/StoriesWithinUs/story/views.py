@@ -183,22 +183,24 @@ def search(request):
 def list_tags(request):
     tag_list = Tag.objects.all().order_by('name')
 
-    p = Paginator(Tag.objects.all(), 4)
+    p = Paginator(Tag.objects.all(), 10)
     page = request.GET.get('page')
     tags = p.get_page(page)
+    num = 'a'* tags.paginator.num_pages
 
-    context={'tag_list': tag_list, 'tags':tags}
+    context={'tag_list': tag_list, 'tags':tags, 'num':num}
 
     return render(request, 'list_tags.html', context)
 
 def list_stories(request):
     story_list = Story.objects.all().order_by('updated_at')
 
-    p = Paginator(Story.objects.all(), 4)
+    p = Paginator(Story.objects.all(), 5)
     page = request.GET.get('page')
     stories = p.get_page(page)
+    num = "a" * stories.paginator.num_pages
 
-    context={'story_list': story_list, 'stories':stories}
+    context={'story_list': story_list, 'stories':stories, 'num':num}
 
     return render(request, 'list_stories.html', context)
 
@@ -207,9 +209,10 @@ def list_stories(request):
 def home(request):
     story_list = Story.objects.all().order_by('updated_at')
 
-    p = Paginator(Story.objects.all(), 4)
+    p = Paginator(Story.objects.all(), 5)
     page = request.GET.get('page')
     stories = p.get_page(page)
+    num = "a" * stories.paginator.num_pages
 
-    return render(request, 'home.html', {'story_list': story_list, 'stories':stories})
+    return render(request, 'home.html', {'story_list': story_list, 'stories':stories, 'num':num})
 
