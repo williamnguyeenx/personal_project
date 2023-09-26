@@ -72,19 +72,5 @@
 </div>
 <!-- end lastest -->
 
-<div class = "container bg-light" style="color:black">
-  {% if stories.has_previous %}
-  <a href="?page=1">&laquo First</a>
-  <a href="?page={{ stories.previous_page_number }}">&laquo Previous</a>
-  {% endif %}
-
-  Page {{ stories.number }} of {{ stories.paginator.num_pages }}
-
-  {% if stories.has_next %}
-  <a href="?page={{ stories.next_page_number }}">Next</a>
-  <a href="?page={{ stories.next_page_number }}">Last &raquo</a>
-  {% endif %}
-</div>
-
 {% endblock %}
 
