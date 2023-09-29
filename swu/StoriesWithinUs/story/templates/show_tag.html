@@ -3,11 +3,15 @@
 
 {% block content %}
         
-<h2 class="head pt-5 text-center"> {{ tag.name }} </h2>
+<div class="container p-4 mt-5 mb-1" style="box-shadow: 0 0 10px #ccc;"> 
+    <h2 class="head"> {{ tag.name }} </h2>
+    description here 
+    <p>total of something found</p>
+</div>
 
-<div class="container my-5">
+<div class="container my-4">
     {% for story in stories %}
-    <a href="{% url 'show-story' story.id %}"><div class="read-intro mb-2" style="border-radius:15px; background-color: rgb(240, 240, 240);">
+    <a href="{% url 'show-story' story.id %}"><div class="read-intro mb-2" style="box-shadow: 0 0 10px #ccc;">
         <div class="row">
             <div class="cover col-* d-flex justify-content-center align-items-center">
                 {% if story.story_image %}

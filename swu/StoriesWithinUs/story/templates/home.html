@@ -37,7 +37,7 @@
     <div class="posts row m-3 mb-5">
       <div class="container">
         {% for story in stories %}
-        <a href="{% url 'show-story' story.id %}"><div class="read-intro mb-2" style="border-radius:15px; background-color: rgb(240, 240, 240);">
+        <a href="{% url 'show-story' story.id %}"><div class="read-intro mb-4" style="box-shadow: 0 0 10px #ccc;">
             <div class="row">
                 <div class="cover col-* d-flex justify-content-center align-items-center">
                     {% if story.story_image %}
