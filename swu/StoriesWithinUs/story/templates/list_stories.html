@@ -5,7 +5,7 @@
 <!-- start reading intro -->
 <div class="container my-5">
     {% for story in stories %}
-    <a href="{% url 'show-story' story.id %}"><div class="read-intro bg-light mb-5">
+    <a href="{% url 'show-story' story.id %}"><div class="read-intro mb-2" style="border-radius:15px; background-color: rgb(240, 240, 240);">
         <div class="row">
             <div class="cover col-* d-flex justify-content-center align-items-center">
                 {% if story.story_image %}
@@ -31,12 +31,12 @@
                             <td> {{ story.created_at }}</td>
                         </tr>
                         <tr>
-                            <th scope="row">Update:</th>
+                            <th scope="row">Likes:</th>
                             <td> {{ story.total_likes }}</td>
                         </tr>
                     </tbody>
                 </table>
-                <p>{{ story.description }}</p>
+                <p class="text_hidden">{{ story.description }}</p>
             </div>
         </div>
     </div></a> 

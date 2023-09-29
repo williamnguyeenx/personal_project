@@ -35,33 +35,45 @@
     </div>
     
     <div class="posts row m-3 mb-5">
+      <div class="container">
         {% for story in stories %}
-        <div class="container mt-2 p-4 bg-light" style="color:black; border-style: inset;">
-            <!--title, author, fandom-->
-            <div class="header module">
-              <h4 class="heading">
-                <a href="{% url 'show-story' story.id %}">{{ story.name }}</a> by <a href="{% url 'profile' story.author.id %}">{{ story.author }}</a>
-              </h4>
+        <a href="{% url 'show-story' story.id %}"><div class="read-intro mb-2" style="border-radius:15px; background-color: rgb(240, 240, 240);">
+            <div class="row">
+                <div class="cover col-* d-flex justify-content-center align-items-center">
+                    {% if story.story_image %}
+                    <img class="shadow" src="{{ story.story_image.url }}" alt="" class="img-fluid" style="width: 300px; height:300px">
+                    {% else %}
+                    <img class="shadow" src="{% static 'img/jiro.png' %}" alt="" class="img-fluid" style="width: 300px; height:300px">
+                    {% endif %}
+                </div>
+                <div class="info col">
+                    <h2 class="head"> {{ story.name }} </h2>
+                    <table class="table table-borderless">
+                        <tbody>
+                            <tr>
+                                <th scope="row">Genre:</th>
+                                <td>{{ story.tag }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Artist:</th>
+                                <td> {{ story.author }} </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Update:</th>
+                                <td> {{ story.created_at }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Likes:</th>
+                                <td> {{ story.total_likes }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="text_hidden">{{ story.description }}</p>
+                </div>
             </div>
-          
-            <!--warnings again, cast, freeform tags-->
-            <h6 class="landmark heading">Genre: <a href="{% url 'show-tag' story.tag.id %}">{{ story.tag }}</a> </h6>
-          
-            <!--summary-->
-              <blockquote class="userstuff summary">
-                <p>{{ story.description }}</p>
-              </blockquote>
-          
-            <!--stats-->
-          
-            <dl class="d-flex">
-                <!-- <dt class="chapters">Chapters:</dt>
-                <dd class="chapters">1/1</dd> -->         
-                <dt class="comments mr-2">Comments: {{ story.comments.all.count }} </dt>
-                <dt class="kudos">Likes: {{ story.total_likes }}</dt>
-            </dl>
-        </div></a>
+        </div></a> 
         {% endfor %}
+      </div>
     </div>
 </div>
 <!-- end lastest -->
